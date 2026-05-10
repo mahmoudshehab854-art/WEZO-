@@ -1,0 +1,49 @@
+{
+  "name": "WEZO Photographer",
+  "version": "1.0.0",
+  "description": "Professional Wedding Photography Website with WhatsApp Booking Integration",
+  "type": "static-website",
+  "keywords": [
+    "wedding photography",
+    "photography",
+    "WEZO",
+    "Cairo",
+    "Egypt",
+    "professional photographer",
+    "booking system",
+    "whatsapp integration"
+  ],
+  "author": "mahmoudshehab854-art",
+  "license": "MIT",
+  "homepage": "https://mahmoudshehab854-art.github.io/WEZO-",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahmoudshehab854-art/WEZO-.git"
+  },
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.0.0",
+    "aos": "^2.3.1",
+    "fontawesome": "^6.5.1"
+  },
+  "features": [
+    "WhatsApp Booking Integration",
+    "Responsive Design",
+    "Photo Gallery",
+    "Booking Management",
+    "Local Storage",
+    "CSV Export",
+    "Statistics Dashboard",
+    "RTL Support (Arabic)",
+    "Dark Theme",
+    "Mobile Optimized"
+  ],
+  "contact": {
+    "phone": "+20 1033964828",
+    "whatsapp": "https://wa.me/201033964828",
+    "email": "mahmoudshehab854@gmail.com"
+  }
+}
