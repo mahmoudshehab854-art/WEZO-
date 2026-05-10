@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEZO Photographer | Premium Wedding Photography</title>
+    <meta name="description" content="WEZO Photographer - Professional wedding photography in Egypt. Capturing your most precious moments with artistic excellence.">
+    <meta name="keywords" content="wedding photography, wedding photographer, WEZO, Egypt, Cairo, professional photography">
+    <meta name="author" content="WEZO Photographer">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="WEZO Photographer | Premium Wedding Photography">
+    <meta property="og:description" content="Professional wedding photography in Egypt. Capturing your most precious moments.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/logo.jpg">
+
+    <link rel="icon" href="images/logo.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Cairo:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 
+                        brand: {
+                            DEFAULT: '#E8E8E8',
+                            light: '#F5F5F5',
+                            dark: '#1A1A1A',
+                            accent: '#C0C0C0'
+                        },
+                        darkBg: '#0D0D0D',
+                        darkCard: '#141414',
+                        darkSurface: '#1C1C1C'
+                    },
+                    fontFamily: { 
+                        cairo: ['Cairo', 'sans-serif'], 
+                        playfair: ['Playfair Display', 'serif'],
+                        marker: ['Permanent Marker', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --brand: #E8E8E8;
+            --brand-light: #F5F5F5;
+            --brand-dark: #1A1A1A;
+            --brand-accent: #C0C0C0;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        html { 
+            scroll-behavior: smooth; 
+        }
+
+        body { 
+            background-color: #0D0D0D; 
+            color: #E8E8E8; 
+            font-family: 'Cairo', sans-serif; 
+            overflow-x: hidden; 
+            line-height: 1.7;
+        }
+
+        ::selection {
+            background: rgba(232, 232, 232, 0.2);
+            color: #fff;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { 
+            width: 6px; 
+        }
+        ::-webkit-scrollbar-track { 
+            background: #0D0D0D; 
+        }
+        ::-webkit-scrollbar-thumb { 
+            background: #333; 
+            border-radius: 3px; 
+        }
+        ::-webkit-scrollbar-thumb:hover { 
+            background: var(--brand); 
+        }
+
+        /* Logo Animation */
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.02); filter: brightness(1.1); }
+        }
+
+        .logo-animate {
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+
+        /* Navigation */
+        .nav-glass { 
+            background: rgba(13, 13, 13, 0.9); 
+            backdrop-filter: blur(20px) saturate(180%); 
+            border-bottom: 1px solid rgba(232, 232, 232, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .nav-glass.scrolled {
+            background: rgba(13, 13, 13, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 0;
+            height: 1px;
+            background: var(--brand);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--brand);
+        }
+
+        /* Hero */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.5) 50%, rgba(13,13,13,0.9) 100%);
+            z-index: 1;
+        }
+
+        .hero-bg img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            filter: blur(2px) grayscale(30%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-title {
+            background: linear-gradient(135deg, #fff 0%, var(--brand) 50%, var(--brand-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .outline-text { 
+            -webkit-text-stroke: 1.5px var(--brand); 
+            color: transparent; 
+            transition: all 0.5s ease;
+        }
+
+        .outline-text:hover {
+            -webkit-text-stroke: 0px;
+            color: var(--brand);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Album Cards */
+        .album-card { 
+            position: relative; 
+            overflow: hidden; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            height: 550px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .album-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(232, 232, 232, 0.08);
+        }
+
+        .album-card img { 
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            filter: grayscale(60%) brightness(0.6); 
+        }
+
+        .album-card:hover img { 
+            transform: scale(1.08); 
+            filter: grayscale(0%) brightness(0.85); 
+        }
+
+        .album-overlay { 
+            background: linear-gradient(to top, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.4) 40%, transparent 100%);
+            transition: background 0.4s ease;
+        }
+
+        .album-card:hover .album-overlay {
+            background: linear-gradient(to top, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.2) 50%, transparent 100%);
+        }
+
+        .album-card .view-btn {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .album-card:hover .view-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section Headers */
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--brand);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(232, 232, 232, 0.15);
+        }
+
+        /* Stats */
+        .stat-item {
+            position: relative;
+            padding: 2rem;
+            border: 1px solid rgba(232, 232, 232, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: rgba(232, 232, 232, 0.02);
+        }
+
+        .stat-item:hover {
+            border-color: rgba(232, 232, 232, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            background: rgba(232, 232, 232, 0.04);
+        }
+
+        /* Services */
+        .service-card {
+            background: rgba(255,255,255,0.015);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--brand), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            background: rgba(255,255,255,0.03);
+            border-color: rgba(232, 232, 232, 0.1);
+            transform: translateY(-6px);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(232, 232, 232, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--brand);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--brand);
+            color: #0D0D0D;
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: rgba(255,255,255,0.015);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: rgba(232, 232, 232, 0.08);
+            line-height: 1;
+        }
+
+        /* Contact Form */
+        .form-input {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            color: #E8E8E8;
+            width: 100%;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--brand);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 0 0 3px rgba(232, 232, 232, 0.08);
+        }
+
+        .form-input::placeholder {
+            color: rgba(232, 232, 232, 0.25);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: rgba(232, 232, 232, 0.6);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brand), var(--brand-accent));
+            color: #0D0D0D;
+            padding: 0.875rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(232, 232, 232, 0.15);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--brand);
+            padding: 0.875rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            border: 1.5px solid var(--brand);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-outline:hover {
+            background: var(--brand);
+            color: #0D0D0D;
+            transform: translateY(-2px);
+        }
+
+        /* Modal */
+        #albumModal { 
+            display: none; 
+            position: fixed; 
+            inset: 0; 
+            z-index: 1000; 
+            background: #0D0D0D; 
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        #albumModal.active {
+            opacity: 1;
+        }
+
+        .masonry { 
+            column-count: 2; 
+            column-gap: 15px; 
+        }
+
+        @media (min-width: 768px) { 
+            .masonry { 
+                column-count: 3; 
+            } 
+        }
+
+        @media (min-width: 1024px) { 
+            .masonry { 
+                column-count: 4; 
+            } 
+        }
+
+        .grid-item { 
+            break-inside: avoid; 
+            margin-bottom: 15px; 
+            border-radius: 12px; 
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .grid-item img { 
+            width: 100%; 
+            display: block;
+            transition: all 0.5s ease;
+            border-radius: 12px;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.03);
+            filter: brightness(1.1);
+        }
+
+        /* Lightbox */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(13, 13, 13, 0.98);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: rgba(13, 13, 13, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 200;
+            transition: right 0.4s ease;
+            padding: 6rem 2rem 2rem;
+            border-left: 1px solid rgba(232, 232, 232, 0.08);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 150;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Footer */
+        .footer-link {
+            color: rgba(232, 232, 232, 0.4);
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: var(--brand);
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(232, 232, 232, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(232, 232, 232, 0.5);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            border-color: var(--brand);
+            color: var(--brand);
+            transform: translateY(-3px);
+        }
+
+        /* Logo Reveal Animation */
+        @keyframes logoReveal {
+            0% { opacity: 0; transform: scale(0.8) rotate(-10deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        .logo-reveal {
+            animation: logoReveal 1s ease-out forwards;
+        }
+
+        /* Glow Effect */
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(232, 232, 232, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .glow-effect:hover {
+            box-shadow: 0 0 30px rgba(232, 232, 232, 0.2);
+        }
+
+        /* Image hover zoom */
+        .img-zoom {
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .img-zoom img {
+            transition: transform 0.6s ease;
+        }
+
+        .img-zoom:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .album-card {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="absolute top-6 left-6 text-white text-2xl" onclick="closeMobileMenu()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="flex flex-col gap-6 text-lg">
+            <a href="#home" class="nav-link text-white hover:text-brand transition-colors" onclick="closeMobileMenu()">الرئيسية</a>
+            <a href="#about" class="nav-link text-white hover:text-brand transition-colors" onclick="closeMobileMenu()">من نحن</a>
+            <a href="#albums" class="nav-link text-white hover:text-brand transition-colors" onclick="closeMobileMenu()">الألبومات</a>
+            <a href="#services" class="nav-link text-white hover:text-brand transition-colors" onclick="closeMobileMenu()">خدماتنا</a>
+            <a href="#testimonials" class="nav-link text-white hover:text-brand transition-colors" onclick="closeMobileMenu()">آراء العملاء</a>
+            <a href="#contact" class="nav-link text-white hover:text-brand transition-colors" onclick="closeMobileMenu()">تواصل معنا</a>
+            <hr class="border-white/10 my-2">
+            <a href="tel:01033964828" class="btn-primary justify-center mt-4" onclick="closeMobileMenu()">
+                <i class="fas fa-phone"></i>
+                call us 
+            </a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-[100] px-6 py-3 flex justify-between items-center nav-glass" id="navbar">
+        <a href="#home" class="flex items-center gap-3 logo-reveal">
+            <img src="images/logo.jpg" alt="WEZO Photographer Logo" class="h-12 w-12 rounded-full object-cover border border-brand/20 logo-animate">
+            <div class="flex flex-col">
+                <span class="font-playfair font-bold text-lg tracking-wider text-brand">WEZO</span>
+                <span class="text-[10px] tracking-[0.3em] text-brand/60 uppercase">Photographer</span>
+            </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-10 text-xs tracking-[0.25em] font-light">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">Who are we?</a>
+            <a href="#albums" class="nav-link">Albums</a>
+            <a href="#services" class="nav-link">Our services</a>
+            <a href="#testimonials" class="nav-link">Customer reviews</a>
+            <a href="#contact" class="nav-link">Contact us</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="tel:01033964828" class="hidden md:inline-flex btn-primary text-xs">
+                <i class="fas fa-phone"></i>
+                01033964828
+            </a>
+            <button class="md:hidden text-white text-xl" onclick="openMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="h-screen flex flex-col items-center justify-center relative text-center overflow-hidden">
+        <div class="hero-bg">
+            <img src="images/img1.jpg" alt="Wedding background" loading="eager">
+        </div>
+
+        <div class="hero-content px-4" data-aos="zoom-out" data-aos-duration="2000">
+            <div class="mb-8" data-aos="fade-down" data-aos-delay="200">
+                <img src="images/logo.jpg" alt="WEZO Logo" class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover mx-auto border-2 border-brand/30 logo-animate glow-effect">
+            </div>
+            <p class="text-brand text-xs tracking-[0.5em] uppercase mb-6 font-light" data-aos="fade-down" data-aos-delay="300">
+                Premium Wedding Photography
+            </p>
+            <h1 class="text-5xl md:text-7xl lg:text-[8rem] font-bold font-playfair leading-none uppercase tracking-tighter mb-6">
+                <span class="hero-title">WEZO</span><br>
+                <span class="outline-text italic">PHOTOGRAPHER</span>
+            </h1>
+            <p class="font-marker text-brand text-xl md:text-2xl mt-4 mb-10" data-aos="fade-up" data-aos-delay="500">
+                CAPTURING ETERNAL MOMENTS
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="700">
+                <a href="#albums" class="btn-primary">
+                    <i class="fas fa-images"></i>
+                    View Portfolio 
+                </a>
+                <a href="https://wa.me/201033964828" target="_blank" class="btn-outline">
+                    <i class="fab fa-whatsapp"></i>
+                    what's app
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <a href="#about" class="text-white/30 hover:text-brand transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="section-label justify-center">
+                    <span></span>
+                    Who are we?
+                    <span></span>
+                </p>
+                <h2 class="text-4xl md:text-5xl font-playfair font-bold mb-6">
+                    We capture the <span class="text-brand italic">moments</span> that last forever
+                </h2>
+                <p class="text-brand/50 max-w-2xl mx-auto text-lg leading-relaxed">
+                    We are the WEZO team, specialized in wedding photography. We believe that every moment on your wedding day deserves to be preserved in the most beautiful image.
+                    We combine artistry and professionalism to deliver unforgettable memories.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="stat-item text-center" data-aos="fade-up" data-aos-delay="0">
+                    <div class="text-4xl md:text-5xl font-playfair font-bold text-brand mb-2">500+</div>
+                    <div class="text-brand/40 text-sm">Weddings photographed</div>
+                </div>
+                <div class="stat-item text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl md:text-5xl font-playfair font-bold text-brand mb-2">7+</div>
+                    <div class="text-brand/40 text-sm">Years of experience</div>
+                </div>
+                <div class="stat-item text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl md:text-5xl font-playfair font-bold text-brand mb-2">10+</div>
+                    <div class="text-brand/40 text-sm">awards</div>
+                </div>
+                <div class="stat-item text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl md:text-5xl font-playfair font-bold text-brand mb-2">100%</div>
+                    <div class="text-brand/40 text-sm">Customer satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Albums Section -->
+    <section id="albums" class="py-24 px-6">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="section-label justify-center">
+                    <span></span>
+                    Art Gallery
+                    <span></span>
+                </p>
+                <h2 class="text-4xl md:text-5xl font-playfair font-bold">
+                    Photo Albums <span class="text-brand italic">Portfolio</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="album-card" onclick="openAlbum('wedding_stories')" data-aos="fade-up" data-aos-delay="0">
+                    <img src="images/img1.jpg" alt="Wedding Stories" loading="lazy">
+                    <div class="album-overlay absolute inset-0 flex flex-col justify-end p-8 md:p-10">
+                        <span class="text-brand text-xs tracking-[0.3em] uppercase mb-2">10 shots</span>
+                        <h4 class="text-2xl md:text-3xl font-playfair font-bold mb-2">Wedding Stories</h4>
+                        <p class="text-brand/50 text-sm mb-4">Inspirational love stories from wedding ceremonies</p>
+                        <div class="view-btn flex items-center gap-2 text-brand text-xs uppercase tracking-wider">
+                            <span>عرض المجموعة</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="album-card" onclick="openAlbum('portraits')" data-aos="fade-up" data-aos-delay="150">
+                    <img src="images/img7.jpg" alt="Portraits" loading="lazy">
+                    <div class="album-overlay absolute inset-0 flex flex-col justify-end p-8 md:p-10">
+                        <span class="text-brand text-xs tracking-[0.3em] uppercase mb-2">6 sessions</span>
+                        <h4 class="text-2xl md:text-3xl font-playfair font-bold mb-2">Portraits</h4>
+                        <p class="text-brand/50 text-sm mb-4">Artistic portrait photography with a professional touch</p>
+                        <div class="view-btn flex items-center gap-2 text-brand text-xs uppercase tracking-wider">
+                            <span>عرض المجموعة</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="album-card" onclick="openAlbum('moments')" data-aos="fade-up" data-aos-delay="300">
+                    <img src="images/img4.jpg" alt="Raw Moments" loading="lazy">
+                    <div class="album-overlay absolute inset-0 flex flex-col justify-end p-8 md:p-10">
+                        <span class="text-brand text-xs tracking-[0.3em] uppercase mb-2">6 moments</span>
+                        <h4 class="text-2xl md:text-3xl font-playfair font-bold mb-2">Raw Moments</h4>
+                        <p class="text-brand/50 text-sm mb-4">Spontaneous and honest moments</p>
+                        <div class="view-btn flex items-center gap-2 text-brand text-xs uppercase tracking-wider">
+                            <span>عرض المجموعة</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-6 bg-darkSurface/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="section-label justify-center">
+                    <span></span>
+                    خدماتنا
+                    <span></span>
+                </p>
+                <h2 class="text-4xl md:text-5xl font-playfair font-bold">
+                    ماذا <span class="text-brand italic">نقدم</span> لك؟
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="service-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Wedding Photography</h3>
+                    <p class="text-brand/40 text-sm leading-relaxed">
+                        Comprehensive coverage for your wedding day from start to finish, with a dedicated team ensuring the best results.
+                    </p>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Engagement sessions</h3>
+                    <p class="text-brand/40 text-sm leading-relaxed">
+                        Artistic portrait photography with a professional touch, capturing the essence of your love story.
+                    </p>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Wedding videos</h3>
+                    <p class="text-brand/40 text-sm leading-relaxed">
+                        Professional video production with the latest technology, featuring cinematic editing that tells the story of your special day.
+                    </p>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Luxury albums</h3>
+                    <p class="text-brand/40 text-sm leading-relaxed">
+                        Design and printing of luxury albums with the finest materials, a timeless gift for your cherished memories.
+                    </p>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Travel photography</h3>
+                    <p class="text-brand/40 text-sm leading-relaxed">
+                        Portrait sessions in beautiful travel destinations around the world, creating unique wedding photos.
+                    </p>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Professional Editing</h3>
+                    <p class="text-brand/40 text-sm leading-relaxed">
+                        Professional photo editing with the preservation of the natural look, for results that exceed expectations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="section-label justify-center">
+                    <span></span>
+                    آراء العملاء
+                    <span></span>
+                </p>
+                <h2 class="text-4xl md:text-5xl font-playfair font-bold">
+                    ما يقوله <span class="text-brand italic">عملاؤنا</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="images/img6.jpg" 
+                             alt="سارة" class="w-14 h-14 rounded-full object-cover border-2 border-brand/20">
+                        <div>
+                            <h4 class="font-bold">سارة أحمد</h4>
+                            <p class="text-brand/30 text-sm">عروس - القاهرة</p>
+                        </div>
+                    </div>
+                    <p class="text-brand/60 text-sm leading-relaxed relative z-10">
+                        تجربة رائعة بكل المقاييس! الفريق كان محترفاً للغاية واستطاعوا التقاط كل لحظة جميلة في يوم زفافي. الصور كانت أجمل مما تخيلت.
+                    </p>
+                    <div class="flex gap-1 mt-4 text-brand text-xs">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="images/img3.jpg" 
+                             alt="محمد" class="w-14 h-14 rounded-full object-cover border-2 border-brand/20">
+                        <div>
+                            <h4 class="font-bold">محمد خالد</h4>
+                            <p class="text-brand/30 text-sm">عريس - الجيزة</p>
+                        </div>
+                    </div>
+                    <p class="text-brand/60 text-sm leading-relaxed relative z-10">
+                        WEZO فريق استثنائي! من التخطيط للتصوير إلى التسليم النهائي، كل شيء كان على أعلى مستوى. أنصح بهم بشدة.
+                    </p>
+                    <div class="flex gap-1 mt-4 text-brand text-xs">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="images/img5.jpg" 
+                             alt="نورة" class="w-14 h-14 rounded-full object-cover border-2 border-brand/20">
+                        <div>
+                            <h4 class="font-bold">نورة عبدالله</h4>
+                            <p class="text-brand/30 text-sm">عروس - الإسكندرية</p>
+                        </div>
+                    </div>
+                    <p class="text-brand/60 text-sm leading-relaxed relative z-10">
+                        لم أتوقع أن تكون النتيجة بهذا الجمال! الصور تعبر عن مشاعرنا بصدق، والألبوم الفاخر كان هدية رائعة لعائلتنا.
+                    </p>
+                    <div class="flex gap-1 mt-4 text-brand text-xs">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-darkSurface/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="section-label justify-center">
+                    <span></span>
+                    تواصل معنا
+                    <span></span>
+                </p>
+                <h2 class="text-4xl md:text-5xl font-playfair font-bold mb-4">
+                    احجز <span class="text-brand italic">موعدك</span> الآن
+                </h2>
+                <p class="text-brand/40 max-w-xl mx-auto">
+                    أخبرنا عن يومك الخاص وسنقوم بالتواصل معك في أقرب وقت
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-8">معلومات التواصل</h3>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center text-brand shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">الموقع</h4>
+                                <p class="text-brand/40 text-sm">القاهرة، مصر</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center text-brand shrink-0">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">الهاتف</h4>
+                                <p class="text-brand/40 text-sm" dir="ltr">01033964828</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center text-brand shrink-0">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">واتساب</h4>
+                                <a href="https://wa.me/201033964828" target="_blank" class="text-brand/40 text-sm hover:text-brand transition-colors">01033964828</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center text-brand shrink-0">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">ساعات العمل</h4>
+                                <p class="text-brand/40 text-sm">مفتوح 24 ساعة</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10">
+                        <h4 class="font-bold mb-4">تابعنا</h4>
+                        <div class="flex gap-3">
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                            <a href="https://wa.me/201033964828" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div data-aos="fade-left">
+                    <form id="contactForm" class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="form-label">الاسم الكامل</label>
+                                <input type="text" class="form-input" placeholder="أدخل اسمك" required>
+                            </div>
+                            <div>
+                                <label class="form-label">رقم الهاتف</label>
+                                <input type="tel" class="form-input" placeholder="01033964828" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-input" placeholder="your@email.com" required>
+                        </div>
+
+                        <div>
+                            <label class="form-label">نوع الخدمة</label>
+                            <select class="form-input" required>
+                                <option value="" disabled selected>اختر الخدمة</option>
+                                <option value="wedding">تصوير زفاف كامل</option>
+                                <option value="engagement">جلسة خطوبة</option>
+                                <option value="video">فيديو زفاف</option>
+                                <option value="album">ألبوم فاخر</option>
+                                <option value="other">أخرى</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="form-label">تاريخ الحدث</label>
+                            <input type="date" class="form-input" required>
+                        </div>
+
+                        <div>
+                            <label class="form-label">ملاحظات إضافية</label>
+                            <textarea class="form-input" rows="4" placeholder="أخبرنا المزيد عن يومك الخاص..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary w-full justify-center text-base py-4">
+                            <i class="fas fa-paper-plane"></i>
+                            إرسال الطلب
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2">
+                    <a href="#home" class="flex items-center gap-3 mb-4">
+                        <img src="images/logo.jpg" alt="WEZO Logo" class="w-12 h-12 rounded-full object-cover border border-brand/20 logo-animate">
+                        <div class="flex flex-col">
+                            <span class="font-playfair font-bold text-2xl tracking-wide text-brand">WEZO</span>
+                            <span class="text-[10px] tracking-[0.3em] text-brand/50 uppercase">Photographer</span>
+                        </div>
+                    </a>
+                    <p class="text-brand/30 text-sm leading-relaxed max-w-sm">
+                        نحن فريق WEZO متخصص في تصوير الأعراس، نؤمن بأن كل لحظة في يوم زفافك تستحق أن تُحفظ بأجمل صورة.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 text-brand text-sm tracking-wider uppercase">روابط سريعة</h4>
+                    <div class="flex flex-col gap-3">
+                        <a href="#home" class="footer-link text-sm">الرئيسية</a>
+                        <a href="#about" class="footer-link text-sm">من نحن</a>
+                        <a href="#albums" class="footer-link text-sm">الألبومات</a>
+                        <a href="#services" class="footer-link text-sm">خدماتنا</a>
+                        <a href="#contact" class="footer-link text-sm">تواصل معنا</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 text-brand text-sm tracking-wider uppercase">خدماتنا</h4>
+                    <div class="flex flex-col gap-3">
+                        <a href="#services" class="footer-link text-sm">تصوير الأعراس</a>
+                        <a href="#services" class="footer-link text-sm">جلسات الخطوبة</a>
+                        <a href="#services" class="footer-link text-sm">فيديو الأعراس</a>
+                        <a href="#services" class="footer-link text-sm">ألبومات فاخرة</a>
+                        <a href="#services" class="footer-link text-sm">تصوير السفر</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-brand/20 text-xs">
+                    © 2026 WEZO Photographer. جميع الحقوق محفوظة.
+                </p>
+                <div class="flex gap-3">
+                    <a href="#" class="social-icon w-9 h-9 text-sm"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon w-9 h-9 text-sm"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon w-9 h-9 text-sm"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon w-9 h-9 text-sm"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Album Modal -->
+    <div id="albumModal">
+        <div class="max-w-7xl mx-auto p-4 md:p-8">
+            <div class="flex justify-between items-center mb-8 md:mb-12 border-b border-white/10 pb-6">
+                <div>
+                    <h2 id="modalTitle" class="text-3xl md:text-4xl font-playfair italic text-brand uppercase"></h2>
+                    <p id="modalSubtitle" class="text-brand/30 text-sm mt-1"></p>
+                </div>
+                <button onclick="closeAlbum()" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:border-brand hover:text-brand transition-all" aria-label="إغلاق">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="modalGallery" class="masonry"></div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-6 left-6 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-brand hover:text-brand transition-all z-10" aria-label="إغلاق">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+        <button class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-brand hover:text-brand transition-all z-10" onclick="event.stopPropagation(); prevImage()" aria-label="الصورة السابقة">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <button class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-brand hover:text-brand transition-all z-10" onclick="event.stopPropagation(); nextImage()" aria-label="الصورة التالية">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <img id="lightboxImg" src="" alt="">
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-brand/40 text-sm" id="lightboxCounter"></div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-darkCard border border-brand/20 text-white px-6 py-4 rounded-xl shadow-2xl z-[3000] flex items-center gap-3 opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4">
+        <i class="fas fa-check-circle text-brand"></i>
+        <span id="toastMessage">تم الإرسال بنجاح!</span>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ 
+            duration: 1200, 
+            once: true,
+            offset: 100
+        });
+
+        // Album Data using local images
+        const albumData = {
+            wedding_stories: {
+                title: "Wedding Stories",
+                subtitle: "10 لقطات من قصة حب",
+                images: [
+                    "images/img1.jpg",
+                    "images/img2.jpg",
+                    "images/img3.jpg",
+                    "images/img4.jpg",
+                    "images/img5.jpg",
+                    "images/img6.jpg",
+                    "images/img7.jpg",
+                    "images/img8.jpg",
+                    "images/img9.jpg",
+                    "images/img10.jpg"
+                ]
+            },
+            portraits: { 
+                title: "Portraits", 
+                subtitle: "6 جلسات تصوير شخصي",
+                images: [
+                    "images/img7.jpg",
+                    "images/img8.jpg",
+                    "images/img9.jpg",
+                    "images/img3.jpg",
+                    "images/img4.jpg",
+                    "images/img6.jpg"
+                ]
+            },
+            moments: { 
+                title: "Raw Moments", 
+                subtitle: "6 لحظة عفوية صادقة",
+                images: [
+                    "images/img4.jpg",
+                    "images/img5.jpg",
+                    "images/img1.jpg",
+                    "images/img10.jpg",
+                    "images/img8.jpg",
+                    "images/img9.jpg"
+                ]
+            }
+        };
+
+        let currentAlbumImages = [];
+        let currentImageIndex = 0;
+
+        // Open Album Modal
+        function openAlbum(key) {
+            const album = albumData[key];
+            currentAlbumImages = album.images;
+            document.getElementById('modalTitle').innerText = album.title;
+            document.getElementById('modalSubtitle').innerText = album.subtitle;
+            const container = document.getElementById('modalGallery');
+            container.innerHTML = '';
+            album.images.forEach((src, index) => {
+                container.innerHTML += `
+                    <div class="grid-item" onclick="openLightbox(${index})" data-aos="fade-up" data-aos-delay="${index * 50}">
+                        <img src="${src}" alt="${album.title} - ${index + 1}" loading="lazy">
+                    </div>
+                `;
+            });
+            const modal = document.getElementById('albumModal');
+            modal.style.display = 'block';
+            setTimeout(() => modal.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Album Modal
+        function closeAlbum() {
+            const modal = document.getElementById('albumModal');
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 400);
+        }
+
+        // Lightbox
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxImage();
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'flex';
+            setTimeout(() => lightbox.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+                if (document.getElementById('albumModal').style.display !== 'block') {
+                    document.body.style.overflow = 'auto';
+                }
+            }, 300);
+        }
+
+        function updateLightboxImage() {
+            document.getElementById('lightboxImg').src = currentAlbumImages[currentImageIndex];
+            document.getElementById('lightboxCounter').innerText = `${currentImageIndex + 1} / ${currentAlbumImages.length}`;
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % currentAlbumImages.length;
+            updateLightboxImage();
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + currentAlbumImages.length) % currentAlbumImages.length;
+            updateLightboxImage();
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const lightbox = document.getElementById('lightbox');
+                if (lightbox.classList.contains('active')) {
+                    closeLightbox();
+                } else {
+                    closeAlbum();
+                }
+            }
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') nextImage();
+                if (e.key === 'ArrowRight') prevImage();
+            }
+        });
+
+        // Mobile Menu
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('active');
+            document.getElementById('mobileOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.getElementById('mobileOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Active Section Highlight
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPos = window.scrollY + 200;
+
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+                const id = section.getAttribute('id');
+
+                if (scrollPos >= top && scrollPos < top + height) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = this.querySelector('input[type="text"]').value;
+            const phone = this.querySelector('input[type="tel"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const service = this.querySelector('select').value;
+            const date = this.querySelector('input[type="date"]').value;
+            const notes = this.querySelector('textarea').value;
+
+            // Build WhatsApp message
+            const serviceNames = {
+                'wedding': 'تصوير زفاف كامل',
+                'engagement': 'جلسة خطوبة',
+                'video': 'فيديو زفاف',
+                'album': 'ألبوم فاخر',
+                'other': 'أخرى'
+            };
+
+            const message = `مرحباً WEZO Photographer 👋
+
+طلب حجز جديد:
+━━━━━━━━━━━━
+👤 الاسم: ${name}
+📞 الهاتف: ${phone}
+📧 الإيميل: ${email}
+📋 الخدمة: ${serviceNames[service] || service}
+📅 تاريخ الحدث: ${date}
+📝 ملاحظات: ${notes || 'لا يوجد'}
+━━━━━━━━━━━━
+
+أرجو التواصل للتأكيد. شكراً!`;
+
+            // Open WhatsApp with pre-filled message
+            const whatsappUrl = `https://wa.me/201033964828?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+
+            showToast('جاري فتح واتساب لإرسال طلبك...');
+            this.reset();
+        });
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').innerText = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 4000);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
