@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج الحجز - WEZO Photographer</title>
+    <meta name="description" content="احجز موعدك مع WEZO للتصوير الفوتوغرافي الاحترافي للأفراح">
+    
+    <link rel="icon" href="logo.jpg">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 100%);
+            color: #E8E8E8;
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background: rgba(13, 13, 13, 0.95);
+            border: 1px solid rgba(232, 232, 232, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h1 {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff 0%, #E8E8E8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: rgba(232, 232, 232, 0.6);
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-group.grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: rgba(232, 232, 232, 0.7);
+            font-weight: 600;
+        }
+
+        .form-label .required {
+            color: #ff6b6b;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            color: #E8E8E8;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #E8E8E8;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 0 3px rgba(232, 232, 232, 0.08);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(232, 232, 232, 0.3);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-select option {
+            background: #1A1A1A;
+            color: #E8E8E8;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #E8E8E8, #C0C0C0);
+            color: #0D0D0D;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(232, 232, 232, 0.2);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #E8E8E8;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            color: #C0C0C0;
+            transform: translateX(-4px);
+        }
+
+        .form-success {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: #81C784;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .form-error {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            color: #EF5350;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .info-card {
+            background: rgba(232, 232, 232, 0.03);
+            border: 1px solid rgba(232, 232, 232, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card h3 {
+            color: #E8E8E8;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card p {
+            color: rgba(232, 232, 232, 0.6);
+            line-height: 1.6;
+        }
+
+        .required-note {
+            text-align: center;
+            color: rgba(232, 232, 232, 0.5);
+            font-size: 0.875rem;
+            margin-top: 1.5rem;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            border-top-color: #0D0D0D;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen py-8 px-4 flex items-center justify-center">
+        <div class="w-full max-w-2xl">
+            <!-- Back Button -->
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-arrow-right"></i>
+                العودة للموقع الرئيسي
+            </a>
+
+            <!-- Form Container -->
+            <div class="form-container">
+                <!-- Form Header -->
+                <div class="form-header">
+                    <div style="margin-bottom: 1rem;">
+                        <img src="logo.jpg" alt="WEZO Logo" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; display: inline-block; border: 2px solid #E8E8E8;">
+                    </div>
+                    <h1>احجز موعدك</h1>
+                    <p>ملء النموذج التالي لحجز جلسة التصوير الخاصة بك</p>
+                </div>
+
+                <!-- Info Card -->
+                <div class="info-card">
+                    <h3>
+                        <i class="fas fa-info-circle"></i>
+                        معلومات مهمة
+                    </h3>
+                    <p>
+                        بعد ملء النموذج، سيتم فتح واتساب تلقائياً برسالة تفاصيل طلبك. 
+                        يمكنك بعد ذلك إرسال الرسالة مباشرة لتأكيد حجزك.
+                    </p>
+                </div>
+
+                <!-- Messages -->
+                <div class="form-success" id="successMessage">
+                    <i class="fas fa-check-circle"></i>
+                    <span id="successText">تم حفظ طلبك بنجاح!</span>
+                </div>
+                <div class="form-error" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="errorText">حدث خطأ ما، يرجى المحاولة مجدداً</span>
+                </div>
+
+                <!-- Contact Form -->
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            الاسم الكامل
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" name="name" id="fullName" class="form-input" placeholder="أدخل اسمك الكامل" required>
+                    </div>
+
+                    <!-- Phone and Email -->
+                    <div class="form-group grid-2">
+                        <div>
+                            <label class="form-label">
+                                رقم الهاتف
+                                <span class="required">*</span>
+                            </label>
+                            <input type="tel" name="phone" id="phone" class="form-input" placeholder="01XXXXXXXXX" required>
+                        </div>
+                        <div>
+                            <label class="form-label">
+                                البريد الإلكتروني
+                            </label>
+                            <input type="email" name="email" id="email" class="form-input" placeholder="your.email@example.com">
+                        </div>
+                    </div>
+
+                    <!-- Event Date and Time -->
+                    <div class="form-group grid-2">
+                        <div>
+                            <label class="form-label">
+                                تاريخ الحفل
+                                <span class="required">*</span>
+                            </label>
+                            <input type="date" name="eventDate" id="eventDate" class="form-input" required>
+                        </div>
+                        <div>
+                            <label class="form-label">
+                                الوقت المفضل
+                            </label>
+                            <input type="time" name="eventTime" id="eventTime" class="form-input">
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            موقع الحفل
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" name="location" id="location" class="form-input" placeholder="المدينة / الفندق / المكان" required>
+                    </div>
+
+                    <!-- Service Type -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            نوع الخدمة المطلوبة
+                            <span class="required">*</span>
+                        </label>
+                        <select name="serviceType" id="serviceType" class="form-select" required>
+                            <option value="">-- اختر نوع الخدمة --</option>
+                            <option value="تصوير زفاف كامل">تصوير زفاف كامل</option>
+                            <option value="جلسة خطوبة">جلسة خطوبة</option>
+                            <option value="تصوير فيديو">تصوير فيديو</option>
+                            <option value="ألبوم فاخر">ألبوم فاخر</option>
+                            <option value="تصوير في الخارج">تصوير في الخارج</option>
+                            <option value="خدمة متكاملة">خدمة متكاملة</option>
+                        </select>
+                    </div>
+
+                    <!-- Number of Hours -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            عدد ساعات التصوير
+                        </label>
+                        <select name="hours" id="hours" class="form-select">
+                            <option value="">-- اختر عدد الساعات --</option>
+                            <option value="4 ساعات">4 ساعات</option>
+                            <option value="6 ساعات">6 ساعات</option>
+                            <option value="8 ساعات">8 ساعات</option>
+                            <option value="10 ساعات">10 ساعات</option>
+                            <option value="يوم كامل">يوم كامل</option>
+                            <option value="غير محدد">غير محدد</option>
+                        </select>
+                    </div>
+
+                    <!-- Guest Count -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            عدد الضيوف (تقريبي)
+                        </label>
+                        <input type="number" name="guestCount" id="guestCount" class="form-input" placeholder="عدد الضيوف المتوقع" min="0">
+                    </div>
+
+                    <!-- Additional Notes -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            ملاحظات وطلبات خاصة
+                        </label>
+                        <textarea name="notes" id="notes" class="form-textarea" placeholder="أخبرنا عن أي متطلبات خاصة أو أفكار لديك..."></textarea>
+                    </div>
+
+                    <!-- Terms Agreement -->
+                    <div class="form-group" style="margin-bottom: 2rem;">
+                        <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; color: rgba(232, 232, 232, 0.6); font-size: 0.9rem;">
+                            <input type="checkbox" id="agree" required style="width: 18px; height: 18px; cursor: pointer;">
+                            أوافق على سياسة الخصوصية وشروط الاستخدام
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        إرسال الطلب عبر واتساب
+                    </button>
+
+                    <p class="required-note">
+                        <span class="required">*</span> الحقول المطلوبة
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="whatsapp-contact.js"></script>
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                eventDate: document.getElementById('eventDate').value,
+                eventTime: document.getElementById('eventTime').value,
+                location: document.getElementById('location').value,
+                serviceType: document.getElementById('serviceType').value,
+                hours: document.getElementById('hours').value,
+                guestCount: document.getElementById('guestCount').value,
+                notes: document.getElementById('notes').value
+            };
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="loading-spinner"></span> جاري المعالجة...';
+
+            // Handle form submission
+            setTimeout(() => {
+                const result = WEZO.handleContactForm(formData);
+
+                if (result.success) {
+                    // Show success message
+                    successMessage.style.display = 'flex';
+                    errorMessage.style.display = 'none';
+
+                    // Reset form
+                    form.reset();
+
+                    // Reset button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الطلب عبر واتساب';
+                } else {
+                    // Show error message
+                    errorMessage.style.display = 'flex';
+                    document.getElementById('errorText').textContent = result.error || 'حدث خطأ ما';
+                    successMessage.style.display = 'none';
+
+                    // Reset button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الطلب عبر واتساب';
+                }
+            }, 500);
+        }
+
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const eventDateInput = document.getElementById('eventDate');
+            const today = new Date().toISOString().split('T')[0];
+            eventDateInput.min = today;
+        });
+    </script>
+</body>
+</html>
